@@ -1,11 +1,5 @@
 import { Pool } from 'undici';
-
-interface ClientOptions {
-  url: string;
-  user: string;
-  password: string;
-  connections?: number;
-}
+import { ClientOptions } from './type';
 export default class Request {
   private readonly options: ClientOptions;
   private client: Pool;
@@ -20,7 +14,7 @@ export default class Request {
       connections,
     });
   }
-  async request(options: any) {
+  async request<T = any>(options: any): Promise<T> {
     const { headers: defaultOptions } = this;
     const { headers: sourceOptions = {}, Method } = options;
     const headers = Object.assign(defaultOptions, sourceOptions);
@@ -28,11 +22,11 @@ export default class Request {
 
     const { body, statusCode } = await this.client.request(options);
     if (Method == 'HEAD' || Method === 'GET') {
-      return statusCode === 200;
+      return (statusCode === 200) as any;
     } else {
       const result = await body.json();
       if (statusCode !== 200) {
-        return new Error(result?.error.toString());
+        throw new Error(result?.error.toString());
       }
       return result;
     }

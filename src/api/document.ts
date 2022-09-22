@@ -1,72 +1,121 @@
-export interface MultiParams {
-  index: string;
-  data: any[];
-}
-export interface GetParams {
-  index: string;
-  id: string;
-}
-export interface CreateParams {
-  index: string;
-  data: Record<string, any>;
-}
-export interface DeleteParams {
-  index: string;
-  id: string;
-}
-
-export interface UpdateParams extends CreateParams {
-  id: string;
-}
+import Request from '../client';
+import {
+  MetaHTTPResponseRecordCount,
+  MetaJSONIngest,
+  MetaHTTPResponseID,
+  DocumentCreate,
+  DocumentUpdate,
+  DocumentDelete,
+  DocumentMulti,
+} from '../type';
 export default class Document {
-  private readonly client;
-  constructor(client: any) {
+  private readonly client: Request;
+  constructor(client: Request) {
     this.client = client;
   }
-  multi(params: MultiParams): Promise<any> {
-    const { index, data } = params;
+  /**
+   * No description
+   *
+   * @tags Document
+   * @name Bulk
+   * @summary Bulk documents
+   * @request POST:/api/_bulk
+   */
+  bulk(params: string) {
+    return this.client.request<MetaHTTPResponseRecordCount>({
+      path: `/api/_bulk`,
+      method: 'POST',
+      body: params,
+    });
+  }
+  /**
+   * No description
+   *
+   * @tags Document
+   * @name Bulkv2
+   * @summary Bulkv2 documents
+   * @request POST:/api/_bulkv2
+   */
+  bulkv2(params: MetaJSONIngest) {
+    return this.client.request<MetaHTTPResponseRecordCount>({
+      path: `/api/_bulkv2`,
+      method: 'POST',
+      body: JSON.stringify(params),
+    });
+  }
+  /**
+   * No description
+   *
+   * @tags Document
+   * @name Multi
+   * @summary Multi documents
+   * @request POST:/api/{index}/_multi
+   */
+  multi(params: DocumentMulti): Promise<any> {
+    const { index, query } = params;
     return this.client.request({
       path: `/api/${index}/_multi`,
       method: 'POST',
-      body: JSON.stringify(data),
+      body: JSON.stringify(query),
     });
   }
-  bulkv2(params: MultiParams): Promise<any> {
-    const { index, data } = params;
-    return this.client.request({
-      path: `/api/_bulkv2`,
-      method: 'POST',
-      body: JSON.stringify({
-        index,
-        records: data,
-      }),
-    });
-  }
-  create(params: CreateParams): Promise<any> {
-    const { index, data } = params;
-    return this.client.request({
+  /**
+   * No description
+   *
+   * @tags Document
+   * @name IndexDocument
+   * @summary Create or update document
+   * @request POST:/api/{index}/_doc
+   */
+  create(params: DocumentCreate) {
+    const { index, document } = params;
+    return this.client.request<MetaHTTPResponseID>({
       path: `/api/${index}/_doc/`,
       method: 'POST',
-      body: JSON.stringify(data),
+      body: JSON.stringify(document),
     });
   }
-  update(params: UpdateParams): Promise<any> {
-    const { index, data, id } = params;
+  /**
+   * No description
+   *
+   * @tags Document
+   * @name UpdateDocument
+   * @summary Update document with id
+   * @request POST:/api/{index}/_update/{id}
+   */
+  update(params: DocumentUpdate): Promise<any> {
+    const { index, document, id } = params;
     return this.client.request({
       path: `/api/${index}/_update/${id}`,
       method: 'POST',
-      body: JSON.stringify(data),
+      body: JSON.stringify(document),
     });
   }
-  createOrUpdate(params: UpdateParams): Promise<any> {
-    const { index, data, id } = params;
-    return this.client.request({
+  /**
+   * No description
+   *
+   * @tags Document
+   * @name IndexDocumentWithId
+   * @summary Create or update document with id
+   * @request PUT:/api/{index}/_doc/{id}
+   */
+  createOrUpdate(params: DocumentUpdate): Promise<any> {
+    const { index, document, id } = params;
+    return this.client.request<MetaHTTPResponseID>({
       path: `/api/${index}/_doc/${id}`,
       method: 'PUT',
-      body: JSON.stringify(data),
+      body: JSON.stringify(document),
     });
   }
-  delete(params: DeleteParams): Promise<any> {
+  /**
+   * No description
+   *
+   * @tags Document
+   * @name DeleteDocument
+   * @summary Delete document
+   * @request DELETE:/api/{index}/_doc/{id}
+   */
+  delete(params: DocumentDelete): Promise<any> {
     const { index, id } = params;
     return this.client.request({
       path: `/api/${index}/_update/${id}`,

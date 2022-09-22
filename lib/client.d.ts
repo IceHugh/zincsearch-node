@@ -1,15 +1,9 @@
-interface ClientOptions {
-    url: string;
-    user: string;
-    password: string;
-    connections?: number;
-}
+import { ClientOptions } from './type';
 export default class Request {
     private readonly options;
     private client;
     headers: any;
     constructor(options: ClientOptions);
-    request(options: any): Promise<any>;
+    request<T = any>(options: any): Promise<T>;
 }
-export {};
 //# sourceMappingURL=client.d.ts.map
