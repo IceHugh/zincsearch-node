@@ -670,9 +670,9 @@ export interface V1ZincQueryForSDK {
 }
 
 export interface ListIndicesParams {
-  pageNum?: number;
-  pageSize?: number;
-  sortBy?: string;
+  page_num?: number;
+  page_size?: number;
+  sort_by?: string;
   desc?: string;
   name?: string;
 }

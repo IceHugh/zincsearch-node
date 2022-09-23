@@ -7,6 +7,7 @@ import {
   MetaHTTPResponseTemplate,
   EsSearch,
   MetaSearchResponse,
+  IndexAnalyzeResponse,
 } from '../type';
 import Request from '../client';
 
@@ -14,6 +15,21 @@ export default class Es {
   private readonly client: Request;
   constructor(client: any) {
     this.client = client;
+  }
+  /**
+   * No description
+   *
+   * @tags Index
+   * @name Analyze
+   * @summary Analyze
+   * @request POST:/api/_analyze
+   */
+   analyze(params: object) {
+    return this.client.request<IndexAnalyzeResponse>({
+      path: '/es/_analyze',
+      method: 'POST',
+      body: JSON.stringify(params),
+    });
   }
   /**
    * No description

@@ -62,7 +62,7 @@ To get a local copy up and running follow these simple example steps.
   ```js
   const ZincSearch = require('zincsearch-node/lib/index.cjs')
   ```
-2. example
+2. init
   ```js
   const zincSearch = new ZincSearch({
     url: /* zincsearch url */,
@@ -72,6 +72,8 @@ To get a local copy up and running follow these simple example steps.
   // check healthz
   await zincSearch.healthz();
   ```
+3. [more example see this wiki](https://github.com/IceHugh/zincsearch-node/wiki)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 

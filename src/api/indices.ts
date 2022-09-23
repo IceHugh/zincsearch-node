@@ -142,7 +142,7 @@ export default class Indices {
    * @summary List index Name
    * @request GET:/api/index_name
    */
-  nameList(params: IndexNameParams) {
+  listName(params: IndexNameParams) {
     return this.client.request<string[]>({
       path: `/api/index_name`,
       method: 'GET',
