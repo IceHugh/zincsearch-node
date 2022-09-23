@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "target": "ES6",
-    "module": "ESNext",
-    "lib": ["ES6"],
+    "target": "esnext",
+    "module": "esnext",
+    "lib": ["esnext"],
     "skipLibCheck": true,
     "sourceMap": false,
     "outDir": "./lib",
@@ -17,11 +17,11 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
+    "esModuleInterop": false,
     "declaration": true,
     "declarationMap": true,
     "baseUrl": "."
   },
   "exclude": ["node_modules", "lib"],
-  "include": ["./src/**/*.ts"]
+  "include": ["src/**/*"]
 }

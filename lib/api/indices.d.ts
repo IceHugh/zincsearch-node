@@ -1,4 +1,4 @@
-import { IndexAnalyzeResponse, MetaIndexSimple, ListIndicesParams, IndexIndexListResponse, MetaHTTPResponse, MetaHTTPResponseIndex, IndexNameParams, MetaTermsQuery, MetaMappings, MetaIndexSettings } from '../type';
+import { IndexAnalyzeResponse, MetaIndexSimple, ListIndicesParams, IndexIndexListResponse, MetaHTTPResponse, MetaHTTPResponseIndex, IndexNameParams, MetaTermsQuery, SetMapping, SetSetting } from '../type';
 export default class Indices {
     private readonly client;
     constructor(client: any);
@@ -12,8 +12,8 @@ export default class Indices {
     refresh(index: string): Promise<MetaHTTPResponse>;
     nameList(params: IndexNameParams): Promise<string[]>;
     getMapping(index: string): Promise<MetaTermsQuery>;
-    setMapping(index: string, mapping: MetaMappings): Promise<MetaHTTPResponse>;
+    setMapping({ index, mapping }: SetMapping): Promise<MetaHTTPResponse>;
     getSetting(index: string): Promise<MetaTermsQuery>;
-    setSetting(index: string, settings: MetaIndexSettings): Promise<MetaHTTPResponse>;
+    setSetting({ index, settings }: SetSetting): Promise<MetaHTTPResponse>;
 }
 //# sourceMappingURL=indices.d.ts.map

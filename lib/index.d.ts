@@ -5,6 +5,7 @@ import Search from './api/search';
 import Es from './api/es';
 import User from './api/user';
 import { ZincSearchOptions } from './type';
+export * from './type';
 export default class ZincSearch {
     readonly indices: Indices;
     readonly document: Document;

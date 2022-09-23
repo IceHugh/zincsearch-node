@@ -485,4 +485,15 @@ export interface EsSearch extends MetaZincQueryForSDK {
 export interface V1Search extends V1ZincQueryForSDK {
     index: string;
 }
+export interface EsCreateIndex extends MetaIndexSimple {
+    index: string;
+}
+export interface SetMapping {
+    index: string;
+    mapping: MetaMappings;
+}
+export interface SetSetting {
+    index: string;
+    settings: MetaIndexSettings;
+}
 //# sourceMappingURL=type.d.ts.map

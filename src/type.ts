@@ -1,5 +1,3 @@
-
-
 export interface AggregationHistogramBound {
   /** maximum */
   max?: number;
@@ -686,7 +684,7 @@ export interface ClientOptions {
   url: string;
   user: string;
   password: string;
-  connections?: number;
+  connections?: number; // The number of undici Client instances to create. 
 }
 
 export interface ZincSearchOptions extends ClientOptions {}
@@ -714,4 +712,16 @@ export interface EsSearch extends MetaZincQueryForSDK {
 }
 export interface V1Search extends V1ZincQueryForSDK {
   index: string;
+}
+export interface EsCreateIndex extends MetaIndexSimple {
+  index: string;
+}
+
+export interface SetMapping {
+  index: string;
+  mapping: MetaMappings;
+}
+export interface SetSetting {
+  index: string;
+  settings: MetaIndexSettings;
 }

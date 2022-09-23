@@ -8,8 +8,8 @@ import {
   CoreIndex,
   IndexNameParams,
   MetaTermsQuery,
-  MetaMappings,
-  MetaIndexSettings,
+  SetMapping,
+  SetSetting,
 } from '../type';
 import Request from '../client';
 
@@ -171,7 +171,7 @@ export default class Indices {
    * @summary Set index mappings
    * @request PUT:/api/{index}/_mapping
    */
-  setMapping(index: string, mapping: MetaMappings) {
+  setMapping({ index, mapping }: SetMapping) {
     return this.client.request<MetaHTTPResponse>({
       path: `/api/${index}/_mapping`,
       method: 'PUT',
@@ -200,7 +200,7 @@ export default class Indices {
    * @summary Set index Settings
    * @request PUT:/api/{index}/_settings
    */
-  setSetting(index: string, settings: MetaIndexSettings) {
+  setSetting({ index, settings }: SetSetting) {
     return this.client.request<MetaHTTPResponse>({
       path: `/api/${index}/_setting`,
       method: 'PUT',

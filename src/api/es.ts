@@ -1,5 +1,5 @@
 import {
-  MetaIndexSimple,
+  EsCreateIndex,
   MetaHTTPResponse,
   MetaTermsQuery,
   MetaTemplate,
@@ -131,7 +131,8 @@ export default class Es {
    * @summary Create index for compatible ES
    * @request PUT:/es/{index}
    */
-  create(index: string, data: MetaIndexSimple) {
+  create(params: EsCreateIndex) {
+    const { index, ...data } = params;
     return this.client.request<MetaTermsQuery>({
       path: `/es/${index}`,
       method: 'PUT',

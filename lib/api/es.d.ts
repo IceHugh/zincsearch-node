@@ -1,4 +1,4 @@
-import { MetaIndexSimple, MetaHTTPResponse, MetaTermsQuery, MetaTemplate, MetaIndexTemplate, MetaHTTPResponseTemplate, EsSearch, MetaSearchResponse } from '../type';
+import { EsCreateIndex, MetaHTTPResponse, MetaTermsQuery, MetaTemplate, MetaIndexTemplate, MetaHTTPResponseTemplate, EsSearch, MetaSearchResponse } from '../type';
 export default class Es {
     private readonly client;
     constructor(client: any);
@@ -10,7 +10,7 @@ export default class Es {
     updateTemplate(name: string, template: MetaIndexTemplate): Promise<MetaIndexTemplate>;
     deleteTemplate(name: string): Promise<MetaHTTPResponse>;
     mSearch(query: string): Promise<MetaIndexTemplate>;
-    create(index: string, data: MetaIndexSimple): Promise<MetaTermsQuery>;
+    create(params: EsCreateIndex): Promise<MetaTermsQuery>;
     exists(index: string): Promise<MetaHTTPResponse>;
     getMapping(index: string): Promise<MetaTermsQuery>;
     search(params: EsSearch): Promise<MetaSearchResponse>;
