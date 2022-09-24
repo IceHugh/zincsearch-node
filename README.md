@@ -35,17 +35,17 @@ To get a local copy up and running follow these simple example steps.
 1. npm
 
   ```sh
-  npm install zincsearch-node undici
+  npm install zincsearch-node 
   ```
 2. yarn
 
   ```sh
-  yarn install zincsearch-node undici
+  yarn install zincsearch-node 
   ```
 3. pnpm
 
   ```sh
-  pnpm add install zincsearch-node undici
+  pnpm add zincsearch-node 
   ```
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
