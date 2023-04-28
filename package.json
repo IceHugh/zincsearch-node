@@ -1,6 +1,6 @@
 {
   "name": "zincsearch-node",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "zincsearch sdk for node with promise",
   "main": "lib/index.cjs.js",
   "module": "lib/index.esm.js",
