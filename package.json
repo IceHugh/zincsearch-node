@@ -1,6 +1,6 @@
 {
   "name": "zincsearch-node",
-  "version": "2.0.2",
+  "version": "2.1.0",
   "description": "zincsearch sdk for node with promise",
   "main": "lib/index.cjs.js",
   "module": "lib/index.esm.js",
@@ -11,6 +11,7 @@
   },
   "scripts": {
     "build": "rollup --config",
+    "tsc": "tsc",
     "release": "npm run build && npm publish"
   },
   "keywords": [
@@ -21,9 +22,6 @@
   "license": "MIT",
   "peerDependencies": {
     "undici": ">=5.10.0"
-  },
-  "dependencies": {
-    "undici": "^5.10.0"
   },
   "devDependencies": {
     "@chiogen/rollup-plugin-terser": "^7.0.2",
@@ -38,5 +36,8 @@
   },
   "files": [
     "lib/**/*"
-  ]
+  ],
+  "dependencies": {
+    "typescript": "^4.9.3"
+  }
 }

@@ -1,7 +1,8 @@
-import { EsCreateIndex, MetaHTTPResponse, MetaTermsQuery, MetaTemplate, MetaIndexTemplate, MetaHTTPResponseTemplate, EsSearch, MetaSearchResponse } from '../type';
+import { EsCreateIndex, MetaHTTPResponse, MetaTermsQuery, MetaTemplate, MetaIndexTemplate, MetaHTTPResponseTemplate, EsSearch, MetaSearchResponse, IndexAnalyzeResponse } from '../type';
 export default class Es {
     private readonly client;
     constructor(client: any);
+    analyze(params: object): Promise<IndexAnalyzeResponse>;
     bulk(params: string): Promise<MetaTermsQuery>;
     addOrRemoveEsAlias(): Promise<MetaTermsQuery>;
     listTemplates(): Promise<MetaTemplate[]>;

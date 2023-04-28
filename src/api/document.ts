@@ -118,7 +118,7 @@ export default class Document {
   delete(params: DocumentDelete): Promise<any> {
     const { index, id } = params;
     return this.client.request({
-      path: `/api/${index}/_update/${id}`,
+      path: `/api/${index}/_doc/${id}`,
       method: 'DELETE',
     });
   }

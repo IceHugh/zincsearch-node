@@ -15,7 +15,7 @@ export interface AuthLoginUser {
     name?: string;
     role?: string;
 }
-export declare type CoreIndex = object;
+export type CoreIndex = object;
 export interface IndexAnalyzeResponse {
     tokens?: IndexAnalyzeResponseToken[];
 }
@@ -233,13 +233,13 @@ export interface MetaJSONIngest {
 export interface MetaMappings {
     properties?: Record<string, MetaProperty>;
 }
-export declare type MetaMatchAllQuery = object;
+export type MetaMatchAllQuery = object;
 export interface MetaMatchBoolPrefixQuery {
     analyzer?: string;
     boost?: number;
     query?: string;
 }
-export declare type MetaMatchNoneQuery = object;
+export type MetaMatchNoneQuery = object;
 export interface MetaMatchPhrasePrefixQuery {
     analyzer?: string;
     boost?: number;
@@ -371,7 +371,7 @@ export interface MetaTermQueryForSDK {
     case_insensitive?: boolean;
     value?: string;
 }
-export declare type MetaTermsQuery = Record<string, any>;
+export type MetaTermsQuery = Record<string, any>;
 export interface MetaTotal {
     value?: number;
 }
@@ -445,9 +445,9 @@ export interface V1ZincQueryForSDK {
     sort_fields?: string[];
 }
 export interface ListIndicesParams {
-    pageNum?: number;
-    pageSize?: number;
-    sortBy?: string;
+    page_num?: number;
+    page_size?: number;
+    sort_by?: string;
     desc?: string;
     name?: string;
 }

@@ -10,7 +10,7 @@ export default class Indices {
     get(index: string): Promise<object>;
     delete(index: string): Promise<MetaHTTPResponseIndex>;
     refresh(index: string): Promise<MetaHTTPResponse>;
-    nameList(params: IndexNameParams): Promise<string[]>;
+    listName(params: IndexNameParams): Promise<string[]>;
     getMapping(index: string): Promise<MetaTermsQuery>;
     setMapping({ index, mapping }: SetMapping): Promise<MetaHTTPResponse>;
     getSetting(index: string): Promise<MetaTermsQuery>;
