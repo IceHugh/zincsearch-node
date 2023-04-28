@@ -70,7 +70,7 @@ export default class Document {
   create(params: DocumentCreate) {
     const { index, document } = params;
     return this.client.request<MetaHTTPResponseID>({
-      path: `/api/${index}/_doc/`,
+      path: `/api/${index}/_doc`,
       method: 'POST',
       body: JSON.stringify(document),
     });
